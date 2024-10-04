@@ -26,8 +26,6 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
 }
 
 #profile-picture {
@@ -80,7 +78,13 @@ a:link, a:visited {
     color: var(--Saldo);
 }
 
-.home-btn {
+#main-btns {
+    display: flex;
+    gap: 10px;
+}
+
+.home-btn,
+.add-btn {
     display: inline-block;
     width: 80px;
     height: auto;
@@ -95,17 +99,6 @@ a:link, a:visited {
 .add-btn img {
     width: 100%;
     height: auto;
-}
-.add-btn {
-    display: inline-block;
-    width: 80px;
-    height: auto;
-    min-width: 50px;
-    min-height: auto;
-    vertical-align: middle;
-    border: solid 1px var(--DarkJade);
-    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
 }
 
 #settings-btn {
