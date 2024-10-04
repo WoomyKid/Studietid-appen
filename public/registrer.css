@@ -1,0 +1,41 @@
+:root {
+    --LightBlue: #B9E2E2;
+    --LighterBlue: #F4FEFE;
+    --Aqua: #49BDBE;
+    --DarkJade: #268C8D;
+    --DarkBlue: #2B75B9;
+    --Saldo: #00B91E;
+    --LightestBlue: #D1ECEC;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    top: 0;
+    background-color: var(--LightBlue);
+    font-family: inter;
+}
+
+#Register-form {
+    display: block;
+    border: solid 1px var(--DarkJade);
+    width: 80%;
+    background-color: var(--LighterBlue);
+    margin: auto;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+#Register-form h1{
+    color: var(--DarkJade);
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin-top: 0;
+    padding: 10px;
+    border: solid 1px var(--DarkJade);
+    background-color: var(--LightestBlue);
+}
+
+.register-wrapper {
+
+}

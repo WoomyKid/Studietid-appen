@@ -3,9 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrer</title>
+    <title>Home</title>
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="registrer.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
 </head>
 <body>
-    
+    <div id="header">
+        <span id="profile-picture">
+            <img src="/bilder/Skjermbilde 2024-10-01 124129.png">
+        </span>
+            <ul class="links">
+                <li>
+                    <a href="https://calendar.google.com/calendar/u/0/embed?src=asvg.no_br1ad1b95qtrrv39scqhbu3ut8@group.calendar.google.com&ctz=Europe/Oslo" target="_blank">Studietidkalender</a>
+                </li>
+                <li>
+                    <a href="https://acrobat.adobe.com/id/urn:aaid:sc:EU:ac3f93df-6468-4dcd-8606-3c961b24a8e7" target="_blank">Studietid Info</a>
+                </li>
+            </ul>
+        <div class="saldo-container">
+        <span class="saldo">
+            <p>Saldo:</p>
+            <p id="hours">0</p>
+        </span>
+        </div>
+    <span id="main-btns">
+        <div class="home-btn">
+            <img src="/bilder/homebtn.png">
+        </div>
+        <div class="add-btn">
+            <img src="/bilder/addbtn.png">
+        </div>
+    </span>
+        <div id="settings-btn">
+            <img src="/bilder/settingsbtn.png">
+        </div>
+    </div>
+
+    <main>
+
+    <div id="Register-form">
+    <h1>Studietid</h1>
+    <section class="register-wrapper">
+        <div>Dato</div>
+        <input type="date" name="Date">
+        <br></br>
+
+        <div>Timer</div>
+        <input type="checkbox" id="timeOne" name="Time">
+        <label for="timeOne">15:00 - 16:00</label><br>
+        <input type="checkbox" id="timeTwo" name="Time">
+        <label for="timeTwo">16:00 - 17:00</label>
+        <br></br>
+
+        <div>Rom</div>
+        <label for="rooms"></label>
+            <select id="rooms" name="Rooms">
+                <option value="413">413</option>
+                <option value="414">414</option>
+                <option value="415">415</option>
+                <option value="Biblioteket">Biblioteket</option>
+            </select>
+        <br></br>
+
+        <div>Fag</div>
+        <input type="text" name="Fag" placeholder="Skriv inn faget du jobber med">
+        <br></br>
+
+        <div>Mål</div>
+        <textarea name="Mål" id="Mål" cols="50" rows="10"></textarea>
+        <br>
+        <button id="post_">Registrer</button>
+    </section>
+    </div>
+
+    </main>
+    <script src="app.js"></script>
 </body>
 </html>

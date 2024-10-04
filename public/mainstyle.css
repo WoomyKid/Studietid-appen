@@ -1,0 +1,52 @@
+:root {
+    --LightBlue: #B9E2E2;
+    --LighterBlue: #F4FEFE;
+    --Aqua: #49BDBE;
+    --DarkJade: #268C8D;
+    --DarkBlue: #2B75B9;
+    --Saldo: #00B91E;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    top: 0;
+    background-color: var(--LightBlue);
+    font-family: inter;
+}
+
+#student-name {
+    font-size: 26px;
+    margin-top: 30px;
+    margin-left: 30px;
+    font-weight: 450;
+    letter-spacing: 2px;
+}
+
+#data {
+    border-collapse: collapse;
+    width: 90%;
+    max-width: 90%;
+    text-align: center;
+    margin: auto;
+}
+
+#data .placeholder{
+    color: lightgray;
+}
+
+#data td, #data th {
+    border: 1px solid var(--DarkJade);
+    padding: 8px;
+    color: var(--DarkJade);
+}
+
+#data th {
+    background-color: var(--LighterBlue);
+    font-size: 24px;
+    font-weight: 400;
+}
+
+#data td {
+    background-color: white;
+}

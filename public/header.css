@@ -15,17 +15,15 @@ body {
     font-family: inter;
 }
 
-header {
-    display: block;
+#header {
     background-color: white;
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
     padding: 10px 5%;
-}
-
-#header {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    background-color: white;
 }
 
 #profile-picture {
@@ -64,10 +62,18 @@ a:link, a:visited {
     color: var(--DarkBlue);
 }
 
+.saldo-container {
+    display: flex; /* Flex container for saldo and main buttons */
+    align-items: center; /* Center aligns them vertically */
+    justify-content: center; /* Center aligns them horizontally */
+    flex-grow: 1; /* Allow this container to take available space */
+}
+
 .saldo {
     display: inline-block;
     vertical-align: middle;
     font-size: clamp(16px, 1.5vw, 24px);
+    margin-right: 20px; /* Space between saldo and main buttons */
 }
 
 .saldo p {
@@ -80,25 +86,31 @@ a:link, a:visited {
 
 #main-btns {
     display: flex;
-    gap: 10px;
+    gap: 20px;
+    flex-wrap: nowrap;
+    margin-right: 20px; /* Adjust this value as needed for a bigger gap */
+    justify-content: center; /* Ensures the main buttons are centered in their space */
+    flex-grow: 1; /* Allow main-btns to grow and take available space between saldo and settings */
+
 }
 
 .home-btn,
 .add-btn {
     display: inline-block;
-    width: 80px;
-    height: auto;
-    min-width: 50px;
-    min-height: auto;
+    width: 10vw; /* Use relative width that can shrink */
+    max-width: 80px; /* Set max width for larger screens */
+    min-width: 50px; /* Set a minimum width to prevent buttons from becoming too small */
     vertical-align: middle;
     border: solid 1px var(--DarkJade);
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
     border-radius: 5px;
+    flex-shrink: 1; /* Allow buttons to shrink */
 }
 .home-btn img,
 .add-btn img {
     width: 100%;
     height: auto;
+    object-fit: contain;
 }
 
 #settings-btn {
@@ -108,6 +120,7 @@ a:link, a:visited {
     min-width: 20px;
     min-height: auto;
     vertical-align: middle;
+    margin-left: auto; /* Pushes the settings button to the right */
 }
 
 #settings-btn img {
