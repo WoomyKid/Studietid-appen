@@ -1,0 +1,123 @@
+:root {
+    --LightBlue: #B9E2E2;
+    --LighterBlue: #F4FEFE;
+    --Aqua: #49BDBE;
+    --DarkJade: #268C8D;
+    --DarkBlue: #2B75B9;
+    --Saldo: #00B91E;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    top: 0;
+    background-color: var(--LightBlue);
+    font-family: inter;
+}
+
+header {
+    display: block;
+    background-color: white;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
+    padding: 10px 5%;
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#profile-picture {
+    display: inline-block;
+    width: 10vw;
+    aspect-ratio: 1 / 1;
+    max-width: 100px;
+    min-width: 50px;
+    min-height: 50px;
+    background-color: gray;
+    overflow: hidden;
+    border-radius: 2px;
+    border: solid 1px rgba(0, 0, 0, 0.2);
+    vertical-align: middle;
+}
+
+#profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.links {
+    list-style-type: none;
+    display: inline-block;
+    font-weight: 600;
+    font-size: clamp(18px, 1.5vw, 24px);
+    vertical-align: middle;
+}
+
+.links li {
+    margin-top: 10px;
+}
+
+a:link, a:visited {
+    color: var(--DarkBlue);
+}
+
+.saldo {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: clamp(16px, 1.5vw, 24px);
+}
+
+.saldo p {
+    display: inline;
+}
+
+#hours {
+    color: var(--Saldo);
+}
+
+.home-btn {
+    display: inline-block;
+    width: 80px;
+    height: auto;
+    min-width: 50px;
+    min-height: auto;
+    vertical-align: middle;
+    border: solid 1px var(--DarkJade);
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+.home-btn img,
+.add-btn img {
+    width: 100%;
+    height: auto;
+}
+.add-btn {
+    display: inline-block;
+    width: 80px;
+    height: auto;
+    min-width: 50px;
+    min-height: auto;
+    vertical-align: middle;
+    border: solid 1px var(--DarkJade);
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+#settings-btn {
+    display: inline-block;
+    width: 40px;
+    height: auto;
+    min-width: 20px;
+    min-height: auto;
+    vertical-align: middle;
+}
+
+#settings-btn img {
+    width: 100%;
+    height: auto;
+}
