@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Registrer studietid</title>
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="registrer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,7 +49,7 @@
     <h1>Studietid</h1>
     <section class="register-wrapper">
         <div>Dato</div>
-        <input type="date" name="Date">
+        <input type="date" name="Date" class="input-box">
         <br></br>
 
         <div>Timer</div>
@@ -61,21 +61,30 @@
 
         <div>Rom</div>
         <label for="rooms"></label>
-            <select id="rooms" name="Rooms">
+            <select id="rooms" name="Rooms" class="input-box">
                 <option value="413">413</option>
                 <option value="414">414</option>
                 <option value="415">415</option>
+                <option value="417">417</option>
+                <option value="418">418</option>
+                <option value="419">419</option>
+                <option value="425">425</option>
+                <option value="429">429</option>
+                <option value="430">430</option>
+                <option value="431">431</option>
+                <option value="439">439</option>
+                <option value="452">452</option>
                 <option value="Biblioteket">Biblioteket</option>
             </select>
         <br></br>
 
         <div>Fag</div>
-        <input type="text" name="Fag" placeholder="Skriv inn faget du jobber med">
+        <input type="text" name="Fag" placeholder="Skriv inn faget du jobber med" class="input-box">
         <br></br>
 
         <div>Mål</div>
-        <textarea name="Mål" id="Mål" cols="50" rows="10"></textarea>
-        <br>
+        <textarea name="Mål" id="Mål" rows="5" class="input-box"></textarea>
+        <br></br>
         <button id="post_">Registrer</button>
     </section>
     </div>

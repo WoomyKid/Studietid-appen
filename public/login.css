@@ -1,0 +1,76 @@
+:root {
+    --LightBlue: #B9E2E2;
+    --LighterBlue: #F4FEFE;
+    --Aqua: #49BDBE;
+    --DarkJade: #268C8D;
+    --DarkBlue: #2B75B9;
+    --Saldo: #00B91E;
+    --LightestBlue: #D1ECEC;
+    --Reb: #BC1616;
+}
+
+body {
+    background-color: var(--LightBlue);
+    font-family: inter;
+}
+
+h1 {
+    text-align: center;
+    color: var(--DarkJade);
+    font-weight: bold;
+}
+
+#login-form {
+    background-color: white;
+    display: block;
+    margin: auto;
+    max-width: 500px;
+    border: solid 1px var(--Aqua);
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+#login-form img {
+    display: block;
+    margin: auto;
+    padding-top: 10px;
+    width: 25%;
+}
+
+.login-box {
+    padding: 10px;
+    text-align: left;
+}
+
+.login-div {
+    color: var(--DarkBlue);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 73%;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.login-input {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
+    border: solid 1px var(--DarkBlue);
+    background-color: var(--LighterBlue);
+    padding: 5px;
+    width: 70%;
+}
+
+#log-in {
+    display: block;
+    margin: auto;
+    background-color: var(--Reb);
+    border: none;
+    color: white;
+    font-size: 25px;
+    border-radius: 5px;
+    padding: 10px;
+    width: 150px;
+    margin-bottom: 30px;
+}
