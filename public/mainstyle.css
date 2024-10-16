@@ -43,10 +43,11 @@ body {
 
 #data th {
     background-color: var(--LighterBlue);
-    font-size: 24px;
+    font-size: clamp(1rem, 2.5vw, 2rem); 
     font-weight: 400;
 }
 
 #data td {
     background-color: white;
+    font-size: clamp(0.5rem, 1.5vw, 2rem);
 }
