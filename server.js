@@ -13,6 +13,7 @@ app.use("/", express.static(path.join(__dirname, "/public")));
 app.use("/bilder", express.static(path.join(__dirname, "bilder")));
 app.use("/home", express.static(path.join(__dirname, "/public/index.html")));
 app.use("/register", express.static(path.join(__dirname, "/public/register.html")));
+app.use("/admin", express.static(path.join(__dirname, "/public/admin.html")));
 app.use("*", express.static(path.join(__dirname, "/public/404.html")));
 
 app.listen(port, (error)=> {
@@ -22,4 +23,4 @@ app.listen(port, (error)=> {
     }
 
     console.log("The server is running on http://localhost:" + port);
-})
+}) 
