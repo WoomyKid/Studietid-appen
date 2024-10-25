@@ -49,7 +49,7 @@
     <h1>Studietid</h1>
     <section class="register-wrapper">
         <div>Dato</div>
-        <input type="date" name="Date" class="input-box">
+        <input type="date" name="Date" class="input-box" required>
         <br></br>
 
         <div>Timer</div>
@@ -61,7 +61,7 @@
 
         <div>Rom</div>
         <label for="rooms"></label>
-            <select id="rooms" name="Rooms" class="input-box">
+            <select id="rooms" name="Rooms" class="input-box" required>
                 <option value="413">413</option>
                 <option value="414">414</option>
                 <option value="415">415</option>
@@ -79,19 +79,19 @@
         <br></br>
 
         <div>Fag</div>
-        <input type="text" name="Fag" placeholder="Skriv inn faget du jobber med" class="input-box">
+        <input type="text" name="Fag" placeholder="Skriv inn faget du jobber med" class="input-box" required>
         <br></br>
 
         <div>Lærer til stedet</div>
         <label for="lærer"></label>
-            <select id="teacher" name="Teacher" class="input-box">
+            <select id="teacher" name="Teacher" class="input-box" required>
                 <option value="Klaus Denstore">Klaus Denstore</option>
                 <option value="Torild Hansen">Torild Hansen</option>
             </select>
         <br></br>
 
         <div>Mål</div>
-        <textarea name="Mål" id="Mål" rows="5" class="input-box"></textarea>
+        <textarea name="Mål" id="Mål" rows="5" class="input-box" required></textarea>
         <br></br>
         <button id="post_">Registrer</button>
     </section>

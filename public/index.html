@@ -3,70 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="header.css">
-    <link rel="stylesheet" href="mainstyle.css">
+    <title>Logg inn</title>
+    <link rel="stylesheet" href="login.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
 </head>
 <body>
-    <div id="header">
-        <span id="profile-picture">
-            <img src="/bilder/Skjermbilde 2024-10-01 124129.png">
-        </span>
-            <ul class="links">
-                <li>
-                    <a href="https://calendar.google.com/calendar/u/0/embed?src=asvg.no_br1ad1b95qtrrv39scqhbu3ut8@group.calendar.google.com&ctz=Europe/Oslo" target="_blank">Studietidkalender</a>
-                </li>
-                <li>
-                    <a href="https://acrobat.adobe.com/id/urn:aaid:sc:EU:ac3f93df-6468-4dcd-8606-3c961b24a8e7" target="_blank">Studietid Info</a>
-                </li>
-            </ul>
-        <div class="saldo-container">
-        <span class="saldo">
-            <p>Saldo:</p>
-            <p id="hours">0</p>
-        </span>
+    <h1>Studietid</h1>
+    <div id="login-form">
+        <img src="/bilder/Amalie skram.png">
+        <div class="login-box">
+        <div class="login-div">Brukernavn</div>
+        <input type="text" name="Brukernavn" class="login-input" required>
         </div>
-    <span id="main-btns">
-        <div class="home-btn">
-            <img src="/bilder/homebtn.png">
+        <div class="login-box">
+        <div class="login-div">Passord</div>
+        <input type="password" name="Passord" class="login-input" required>
         </div>
-        <div class="add-btn">
-            <img src="/bilder/addbtn.png">
-        </div>
-    </span>
-        <div id="settings-btn">
-            <img src="/bilder/settingsbtn.png">
-        </div>
+        <br><br>
+        <button id="log-in">Logg inn</button>
     </div>
-
-    <main>
-        <h1 id="student-name">Etternavn Fornavn</h1>
-
-        <table id="data">
-            <tr>
-                <th>DATO</th>
-                <th>TIMER</th>
-                <th>ROM</th>
-                <th>FAG</th>
-                <th>STATUS</th>
-                <th>LÆRER</th>
-            </tr>
-            <tr>
-                <td colspan="6" class="placeholder">Du har ingen data enda!</td>
-                 <!-- <td>04.10.2024</td>
-                 <td>2</td>
-                 <td>Biblioteket</td>
-                 <td>Utvikling</td>
-                 <td>Venter på godkjenning</td>
-                 <td>Trond Sneås Skauge</td> -->
-            </tr>
-        </table>
-
-    </main>
-    <script src="app.js"></script>
+    
 </body>
 </html>

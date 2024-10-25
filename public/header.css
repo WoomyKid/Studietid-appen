@@ -129,10 +129,14 @@ a:link, a:visited {
     min-width: 20px;
     min-height: auto;
     vertical-align: middle;
-    margin-left: auto; /* Pushes the settings button to the right */
+    margin-left: auto;
 }
 
 #settings-btn img {
     width: 100%;
     height: auto;
+}
+
+#settings-btn:hover {
+    filter : hue-rotate(200deg);
 }

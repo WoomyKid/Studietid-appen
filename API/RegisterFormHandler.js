@@ -40,7 +40,7 @@ const handleRegisterForm = {
 
                 console.log("Fetched teacher_id:", teacherId);
 
-                const queryStr = "INSERT INTO register (goal, date, hours, subject, room, teachers_id) VALUES (?, ?, ?, ?, ?, ?)";
+                const queryStr = "INSERT INTO register (goal, date, hours, subject, room, teachers_id, status_id) VALUES (?, ?, ?, ?, ?, ?, 2)";
                 db.run(queryStr, [body_.Goal, body_.Date, body_.TotalHours, body_.Subject, body_.Room, teacherId], (err) => {
                     if (err) {
                         console.log("Error inserting into register table:", err);
