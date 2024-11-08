@@ -11,12 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             console.log("Fetched data:", data);
 
-            tableBody.innerHTML = ''; // Clear the placeholder
-
             if (data.length === 0) {
                 console.log("No data found in the database.");
                 return;
             }
+
+            tableBody.innerHTML = ''; // Clear the placeholder
 
             data.forEach(row => {
                 const tr = document.createElement('tr');

@@ -99,12 +99,12 @@ app.post('/login', (req, res) => {
 
         let validPassword = false;
 
-        // Check if password is hashed or plain text
+        // Sjekker om passordet er plaintext eller ikke
         // if (user.passord.startsWith('$2b$')) {
             // Assume it's a bcrypt hash
             validPassword = bcrypt.compareSync(password, user.passord);
         // } else {
-        //     // Assume it's plain text
+        //     // For å få plaintext til å fungere
         //     validPassword = (password === user.passord);
         // }
 
@@ -136,11 +136,11 @@ app.get('/api/table-data', (req, res) => {
                teachers.name || ' ' || teachers.last_name AS teacher_name
         FROM register
         INNER JOIN status ON register.status_id = status.status_id
-        INNER JOIN teachers ON register.teachers_id = teachers.teacher_id
+        INNER JOIN teachers ON register.teachers_id = teachers.teacher_id WHERE register.users_id = ?
         `
     ;
 
-    db.all(query, [], (err, rows) => {
+    db.all(query, [req.session.user_id], (err, rows) => {
         if (err) {
             console.error('Database error:', err.message);
             res.status(500).json({ error: err.message });
@@ -156,11 +156,11 @@ app.get('/api/saldo', (req, res) => {
     const query = `
         SELECT SUM(hours) AS total_hours
         FROM register
-        WHERE status_id = 1
+        WHERE status_id = 1 AND register.users_id = ?
         `
     ;
 
-    db.get(query, [], (err, row) => {
+    db.get(query, [req.session.user_id], (err, row) => {
         if (err) {
             res.status(500).json({ error: err.message });
             return;
@@ -204,6 +204,17 @@ app.get('/api/user', (req, res) => {
 
         res.json(user); // Return the user data
     });
+
+    app.post('/logout', (req, res) => {
+        req.session.destroy((err) => {
+            if (err) {
+                return res.status(500).json({ message: 'Logout failed' });
+            }
+            res.clearCookie('connect.sid'); // Clear the session cookie
+            res.json({ message: 'Logged out successfully' });
+        });
+    });
+    
 
 });
 

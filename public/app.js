@@ -7,8 +7,22 @@ document.querySelector('.add-btn').addEventListener('click', function() {
 });
 
 document.querySelector('#settings-btn').addEventListener('click', function() {
-    window.location.href = '/';
+    fetch('/logout', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            window.location.href = '/'; // Redirect to login page after logout
+        } else {
+            alert('Logout failed. Please try again.');
+        }
+    })
+    .catch(error => console.error('Error logging out:', error));
 });
+
 
 const registerBtn = document.getElementById("post_");
 const dateEl = document.querySelector("input[name='Date']");
