@@ -1,15 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("DOMContentLoaded event triggered");
+    // console.log("DOMContentLoaded event triggered");
 
     const tableBody = document.getElementById('table-data');
 
     fetch('/api/table-data')
         .then(response => {
-            console.log("Fetch response status:", response.status);
+            // console.log("Fetch response status:", response.status);
             return response.json();
         })
         .then(data => {
-            console.log("Fetched data:", data);
+            // console.log("Fetched data:", data);
 
             if (data.length === 0) {
                 console.log("No data found in the database.");
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <td>${row.teacher_name}</td>
                 `;
 
-                console.log("Appending row:", tr.innerHTML);
+                // console.log("Appending row:", tr.innerHTML);
                 tableBody.appendChild(tr);
             });
         })

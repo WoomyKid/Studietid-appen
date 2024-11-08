@@ -36,5 +36,5 @@ document.addEventListener('DOMContentLoaded', () => {
     function showMessage(message) {
         const feilmelding = document.getElementById('error-message');
         feilmelding.textContent = message;
-    }
+    } 
 });

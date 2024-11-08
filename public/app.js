@@ -28,10 +28,48 @@ const registerBtn = document.getElementById("post_");
 const dateEl = document.querySelector("input[name='Date']");
 const timeOneEl = document.getElementById("timeOne");
 const timeTwoEl = document.getElementById("timeTwo");
+const timeThreeEl = document.getElementById("timeThree");
 const roomSelectEl = document.getElementById("rooms");
 const subjectEl = document.querySelector("input[name='Fag']");
 const teacherEl = document.getElementById("teacher");
 const målEl = document.querySelector("textarea[name='Mål']");
+
+function updateTimeSlots() {
+    const selectedDate = new Date(dateEl.value);
+    
+    if (isNaN(selectedDate)) {
+        // No date = hide all time slots
+        document.getElementById('timeSlotOne').style.display = "none";
+        document.getElementById('timeSlotTwo').style.display = "none";
+        document.getElementById('timeSlotThree').style.display = "none";
+        return;
+    }
+
+    const dayOfWeek = selectedDate.getDay();  // Sunday = 0, Monday = 1 etc..
+
+    // Reset visibility
+    document.getElementById('timeSlotOne').style.display = "none";
+    document.getElementById('timeSlotTwo').style.display = "none";
+    document.getElementById('timeSlotThree').style.display = "none";
+
+    // Show times based on selected day
+    if (dayOfWeek === 1) {
+        document.getElementById('timeSlotThree').style.display = "block";
+    } else if (dayOfWeek === 2) {
+        document.getElementById('timeSlotTwo').style.display = "block";
+    } else if (dayOfWeek === 3 || dayOfWeek === 4) {
+        document.getElementById('timeSlotOne').style.display = "block";
+        document.getElementById('timeSlotTwo').style.display = "block";
+    }
+}
+   
+
+
+// Add an event listener to the date input field to trigger the function when the user selects a date
+dateEl.addEventListener('input', updateTimeSlots);
+
+// Initial call to set time slots based on the default selected date (if any)
+updateTimeSlots();
 
 function calculateTime() {
     let totalHours = 0;
@@ -46,6 +84,9 @@ function calculateTime() {
     } else if (timeTwoEl.checked) {
         totalHours = 1;
         timeRange = "16:00 - 17:00";
+    } else if (timeThreeEl.checked) {
+        totalHours = 1;
+        timeRange = "15:45 - 16:45";
     }
     return { totalHours, timeRange };
 }
@@ -57,7 +98,7 @@ function validateInputs() {
         return false;
     }
 
-    if (!timeOneEl.checked && !timeTwoEl.checked) {
+    if (!timeOneEl.checked && !timeTwoEl.checked && !timeThreeEl.checked) {
         alert("Please select at least one time.");
         return false;
     }

@@ -18,6 +18,24 @@ const db = new sqlite3.Database(DbPath, sqlite3.OPEN_READWRITE, (err) => {
     }
 });
 
+// Middleware to check if the user is authenticated
+function isAuthenticated(req, res, next) {
+    if (req.session.loggedIn) {
+        return next();
+    } else {
+        res.redirect('/login'); // Redirect to login if not authenticated
+    }
+}
+
+// Middleware to check if the user is an admin
+function isAdmin(req, res, next) {
+    if (req.session.admin) {
+        return next();
+    } else {
+        res.status(403).send("Access denied: Admins only."); // Forbidden for non-admin users
+    }
+}
+
 app.use(session({
     secret: 'din hemmelige nøkkel',
     resave: false,
@@ -34,20 +52,30 @@ app.use(express.urlencoded({extended: true}));
 const api_ = require(path.join(__dirname, "/API"));
 app.use("/api", api_);
 
-app.get('/', async (req, res) => {
-    if (req.session.loggedIn && req.session.username) {
-        const isAdmin = sjekkAdmin(req.session.username);
-        if (isAdmin) {
-            res.sendFile(path.join(__dirname, '/public/admin.html')); // Admin page
-        } else {
-            res.sendFile(path.join(__dirname, '/public/mainpage.html')); // Regular user page
-        }
+app.get('/admin', isAuthenticated, isAdmin, (req, res) => {
+    res.sendFile(path.join(__dirname, '/public/admin.html')); // Only accessible if logged in and is admin
+});
+
+app.get('/', (req, res) => {
+    // Redirect to /login if not logged in, otherwise choose appropriate page
+    if (!req.session.loggedIn) {
+        return res.redirect('/login');
+    }
+
+    // Check session for admin status and redirect accordingly
+    if (req.session.admin) {
+        return res.redirect('/admin');
     } else {
-        res.redirect('/login'); // Redirect to login if not logged in
+        return res.redirect('/mainpage');
     }
 });
 
-app.use("/", express.static(path.join(__dirname, "/public")));
+app.get('/mainpage', isAuthenticated, (req, res) => {
+    if (req.session.admin) {
+        return res.redirect('/admin'); // Redirect admin to admin page
+    }
+    res.sendFile(path.join(__dirname, '/public/mainpage.html'));
+});
 
 // app.use("*", express.static(path.join(__dirname, "/public/404.html")));
 //kan ikke ha 404 page hvis jeg bruker den fetch metoden jeg gjør nå..
@@ -124,11 +152,17 @@ app.post('/login', (req, res) => {
     });
 });
 
+// Route for admin page, accessible only by admin users
+app.get('/admin', isAuthenticated, isAdmin, (req, res) => {
+    res.sendFile(path.join(__dirname, '/public/admin.html'));
+});
+
+// Serve login page for unauthenticated users
 app.use("/login", express.static(path.join(__dirname, "/public")));
+
+app.use("/", express.static(path.join(__dirname, "/public")));
 app.use("/bilder", express.static(path.join(__dirname, "bilder")));
-app.use("/mainpage", express.static(path.join(__dirname, "/public/mainpage.html")));
 app.use("/register", express.static(path.join(__dirname, "/public/register.html")));
-app.use("/admin", express.static(path.join(__dirname, "/public/admin.html")));
 
 app.get('/api/table-data', (req, res) => {
     const query = `
@@ -214,7 +248,6 @@ app.get('/api/user', (req, res) => {
             res.json({ message: 'Logged out successfully' });
         });
     });
-    
 
 });
 
