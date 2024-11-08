@@ -101,7 +101,7 @@ registerBtn.onclick = function () {
     })
     .then(response => {
         if (response.ok) {
-            window.location.href = '/home';
+            window.location.href = '/mainpage';
         } else {
             alert("There was an error submitting your registration.");
         }

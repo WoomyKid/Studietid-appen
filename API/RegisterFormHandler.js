@@ -37,11 +37,13 @@ const handleRegisterForm = {
 
             if (row) {
                 const teacherId = row.teacher_id;
+                const userId = req.session.user_id;
+                console.log("Fetched teacher id:", teacherId);
+                console.log("Fetched user id:", userId);
 
-                console.log("Fetched teacher_id:", teacherId);
+                const queryStr = "INSERT INTO register (goal, date, hours, users_id, subject, room, teachers_id, status_id) VALUES (?, ?, ?, ?, ?, ?, ?, 2)";
 
-                const queryStr = "INSERT INTO register (goal, date, hours, subject, room, teachers_id, status_id) VALUES (?, ?, ?, ?, ?, ?, 2)";
-                db.run(queryStr, [body_.Goal, body_.Date, body_.TotalHours, body_.Subject, body_.Room, teacherId], (err) => {
+                db.run(queryStr, [body_.Goal, body_.Date, body_.TotalHours, userId, body_.Subject, body_.Room, teacherId], (err) => {
                     if (err) {
                         console.log("Error inserting into register table:", err);
                         res.status(500).send({

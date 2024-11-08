@@ -12,7 +12,7 @@
 </head>
 <body>
     <h1>Studietid</h1>
-    <div id="login-form">
+    <form id="login-form">
         <img src="/bilder/Amalie skram.png">
         <div class="login-box">
         <div class="login-div">Brukernavn</div>
@@ -22,9 +22,10 @@
         <div class="login-div">Passord</div>
         <input type="password" name="Passord" class="login-input" required>
         </div>
+        <p id="error-message" style="color: red;"></p>
         <br><br>
-        <button id="log-in">Logg inn</button>
-    </div>
-    
+        <button type="submit" id="log-in">Logg inn</button>
+    </form>
+    <script src="login.js"></script>
 </body>
 </html>

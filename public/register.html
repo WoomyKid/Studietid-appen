@@ -14,7 +14,7 @@
 <body>
     <div id="header">
         <span id="profile-picture">
-            <img src="/bilder/Skjermbilde 2024-10-01 124129.png">
+            <img src="" id="profile-img">
         </span>
             <ul class="links">
                 <li>
@@ -39,7 +39,7 @@
         </div>
     </span>
         <div id="settings-btn">
-            <img src="/bilder/settingsbtn.png">
+            <img src="/bilder/logout.png">
         </div>
     </div>
 
@@ -99,5 +99,32 @@
 
     </main>
     <script src="app.js"></script>
+    <script>
+        // gadd ikke å lage en ny side for dette
+        fetch("/api/user", {
+        method: 'GET',
+        credentials: 'same-origin',
+    })
+    .then(response => {
+        if (!response.ok) throw new Error("User not logged in");
+        return response.json();
+    })
+    .then(user => {
+        const profilePic = document.querySelector("#profile-img");
+        profilePic.src = "/bilder/" + user.picture;
+    })
+    .catch(error => {
+        console.error("Error fetching user data:", error);
+        window.location.href = "/";  // Redirect to login if not authenticated
+    });
+
+    fetch('/api/saldo')
+        .then(response => response.json())
+        .then(data => {
+            const saldoElement = document.getElementById('hours');
+            saldoElement.textContent = data.total_hours;
+        })
+        .catch(error => console.error('Error fetching saldo:', error));
+    </script>
 </body>
 </html>
