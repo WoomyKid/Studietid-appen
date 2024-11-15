@@ -4,8 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>admin</title>
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
 </head>
 <body>
-    <h1>Nothing here yet, but at least you're admin!</h1>
+    <div id="header">
+        <span id="profile-picture">
+            <img src="" id="profile-img">
+        </span>
+            <ul class="links">
+                <li>
+                    <a href="https://calendar.google.com/calendar/u/0/embed?src=asvg.no_br1ad1b95qtrrv39scqhbu3ut8@group.calendar.google.com&ctz=Europe/Oslo" target="_blank">Studietidkalender</a>
+                </li>
+            </ul>
+    <span id="main-btns">
+        <div class="home-btn">
+            <img src="/bilder/homebtn.png">
+        </div>
+    </span>
+        <div id="settings-btn">
+            <img src="/bilder/logout.png">
+        </div>
+    </div>
+
+    <main>
+
+        <h1 id="student-name">Etternavn Fornavn</h1>
+
+        <table id="people">
+            <tr>
+                <th>ELEV</th>
+                <th>STATUS</th>
+            </tr>
+            <tbody id="table-data">
+                <!-- <tr>
+                <td>
+                    <span id="student-profile">
+                        <img src="" id="studentprofile-img">
+                    </span>
+                    John Doe
+                </td>
+                     <td><div id="status">Venter på godkjenning!</div></td>
+                </tr> -->
+            </tbody>
+        </table>
+    </main>
+    <script src="personalPage.js"></script>
+    <script src="admin.js"></script>
 </body>
 </html>

@@ -138,5 +138,6 @@ a:link, a:visited {
 }
 
 #settings-btn:hover {
-    filter : hue-rotate(200deg);
+    /* filter : hue-rotate(200deg); */
+    filter: hue-rotate(180deg) saturate(700%) brightness(80%);
 }

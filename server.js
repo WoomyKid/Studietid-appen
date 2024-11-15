@@ -78,7 +78,7 @@ app.get('/mainpage', isAuthenticated, (req, res) => {
 });
 
 // app.use("*", express.static(path.join(__dirname, "/public/404.html")));
-//kan ikke ha 404 page hvis jeg bruker den fetch metoden jeg gjør nå..
+//kan ikke ha 404 page hvis jeg bruker den fetch metoden jeg gjør nå.. :(
 
 function sjekkAdmin(bruker) {
     let admin = false;
@@ -156,6 +156,11 @@ app.post('/login', (req, res) => {
 app.get('/admin', isAuthenticated, isAdmin, (req, res) => {
     res.sendFile(path.join(__dirname, '/public/admin.html'));
 });
+
+app.get('/godkjenn', isAuthenticated, isAdmin, (req, res) => {
+    res.sendFile(path.join(__dirname, '/public/admin-godkjenn.html'));
+});
+
 
 // Serve login page for unauthenticated users
 app.use("/login", express.static(path.join(__dirname, "/public")));
@@ -248,6 +253,23 @@ app.get('/api/user', (req, res) => {
             res.json({ message: 'Logged out successfully' });
         });
     });
+
+    app.get('/api/registered-data', (req, res) => {
+        const query = `
+        SELECT * FROM register WHERE status_id = 2
+        `
+        ;
+        db.all(query, [], (err, rows) => {
+            if (err) {
+                console.error('Database error:', err.message);
+                res.status(500).json({ error: err.message });
+                return;
+            }
+            
+            // Check if data is being retrieved from the database
+            res.json(rows);
+        });
+    })
 
 });
 

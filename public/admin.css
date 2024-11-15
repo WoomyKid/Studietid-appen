@@ -1,0 +1,107 @@
+:root {
+    --LightBlue: #B9E2E2;
+    --LighterBlue: #F4FEFE;
+    --Aqua: #49BDBE;
+    --DarkJade: #268C8D;
+    --DarkBlue: #2B75B9;
+    --Saldo: #00B91E;
+    --LightestBlue: #D1ECEC;
+    --Reb: #BC1616;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    top: 0;
+    background-color: var(--LightBlue);
+    font-family: inter;
+}
+
+#student-name {
+    font-size: 26px;
+    margin-top: 30px;
+    margin-left: 30px;
+    font-weight: 450;
+    letter-spacing: 2px;
+    margin-bottom: 50px;
+}
+
+#people {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 60%;
+    max-width: 90%;
+    text-align: center;
+    margin: auto;
+}
+
+#people td, #people th {
+    border: 1px solid var(--DarkJade);
+    padding: 8px;
+    color: var(--DarkJade);
+    box-sizing: border-box;
+}
+
+#people th {
+    background-color: var(--LighterBlue);
+    font-size: clamp(1.5rem, 2.5vw, 2rem); 
+    font-weight: 400;
+    width: 50%;
+}
+
+#people td {
+    background-color: white;
+    font-size: clamp(1rem, 1.5vw, 2rem);
+}
+
+#table-data tr td:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#student-profile {
+    display: inline-block;
+    width: 10vw;
+    aspect-ratio: 1 / 1;
+    max-width: 60px;
+    min-width: 50px;
+    min-height: 50px;
+    background-color: gray;
+    overflow: hidden;
+    border-radius: 2px;
+    border: solid 1px rgba(0, 0, 0, 0.2);
+    vertical-align: middle;
+    margin-right: 20px;
+}
+
+#student-profile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#status {
+    background-color: var(--Reb);
+    color: white;
+    border-radius: 5px;
+    padding: 3px;
+    max-width: 90%;
+    margin: auto;
+}
+
+#status:hover {
+    background-color: #890d0d;
+    color: rgb(186, 186, 186);
+    cursor: pointer;
+}
+
+#nostat {
+    background-color: rgb(188, 188, 188);
+    color: white;
+    border-radius: 5px;
+    padding: 3px;
+    max-width: 90%;
+    margin: auto;
+    cursor: default;
+}

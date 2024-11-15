@@ -1,6 +1,7 @@
-mail:			passord:
+mail:			    passord:
+
 ola@iskule.no		Passord1
 kari@iskule.no		Passord2
 
-klaus@vlfk		Test1
-torild@vlfk		Test2
+klaus@vlfk		    Test1
+torild@vlfk		    Test2

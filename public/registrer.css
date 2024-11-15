@@ -46,6 +46,10 @@ body {
     padding-bottom: 10px;
 }
 
+.register-wrapper:hover {
+    cursor: default;
+}
+
 .input-box {
     display: block;
     width: 90%;

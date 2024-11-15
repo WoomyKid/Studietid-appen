@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin-godkjenn</title>
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="admin-godkjenn.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div id="header">
+        <span id="profile-picture">
+            <img src="" id="profile-img">
+        </span>
+            <ul class="links">
+                <li>
+                    <a href="https://calendar.google.com/calendar/u/0/embed?src=asvg.no_br1ad1b95qtrrv39scqhbu3ut8@group.calendar.google.com&ctz=Europe/Oslo" target="_blank">Studietidkalender</a>
+                </li>
+            </ul>
+    <span id="main-btns">
+        <div class="home-btn">
+            <img src="/bilder/homebtn.png">
+        </div>
+    </span>
+        <div id="settings-btn">
+            <img src="/bilder/logout.png">
+        </div>
+    </div>
+
+    <main>
+        <div id="Register-form">
+            <h1 id="elev-navn">Ikkefalsk Ekteperson</h1>
+            <section class="register-wrapper">
+                <!-- <div class="categories">Dato: <p>insert dato</p></div>
+                <div class="categories">Tid:</div>
+                <div class="categories">Timer:</div>
+                <div class="categories">Rom:</div>
+                <div class="categories">Fag:</div>
+                <div class="categories">Lærer:</div>
+                <div class="categories">Mål:</div>
+                <textarea name="Mål" id="Mål" rows="5" class="input-box" readonly></textarea>
+                <br><br>
+                <span id="validation-btns">
+                <button id="avvis">Ikke Godkjent</button>
+                <button id="godkjenn">Godkjent</button>
+                </span> -->
+            </section>
+            </div>
+    </main>
+    <script>
+        fetch("/api/user", {
+    method: 'GET',
+    credentials: 'same-origin',
+    })
+    .then(response => {
+        if (!response.ok) throw new Error("User not logged in");
+        return response.json();
+    })
+    .then(user => {
+        const profilePic = document.querySelector("#profile-img");
+        profilePic.src = "/bilder/" + user.picture;
+    })
+    .catch(error => {
+        console.error("Error fetching user data:", error);
+        window.location.href = "/";  // Redirect to login if not authenticated
+    });
+
+document.querySelector('.home-btn').addEventListener('click', function() {
+    window.location.href = '/mainpage';
+});
+
+document.querySelector('#settings-btn').addEventListener('click', function() {
+    fetch('/logout', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            window.location.href = '/'; // Redirect to login page after logout
+        } else {
+            alert('Logout failed. Please try again.');
+        }
+    })
+    .catch(error => console.error('Error logging out:', error));
+    });
+    </script>
+</body>
+</html>
