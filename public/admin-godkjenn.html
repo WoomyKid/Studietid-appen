@@ -32,10 +32,11 @@
     </div>
 
     <main>
-        <div id="Register-form">
+        <div id="Register-container">
+        <!-- <div class="Register-form">
             <h1 id="elev-navn">Ikkefalsk Ekteperson</h1>
             <section class="register-wrapper">
-                <!-- <div class="categories">Dato: <p>insert dato</p></div>
+                <div class="categories">Dato: <p>insert dato</p></div>
                 <div class="categories">Tid:</div>
                 <div class="categories">Timer:</div>
                 <div class="categories">Rom:</div>
@@ -47,10 +48,12 @@
                 <span id="validation-btns">
                 <button id="avvis">Ikke Godkjent</button>
                 <button id="godkjenn">Godkjent</button>
-                </span> -->
+                </span>
             </section>
-            </div>
+            </div> -->
+        </div>
     </main>
+    <script src="admin-godkjenn.js"></script>
     <script>
         fetch("/api/user", {
     method: 'GET',
@@ -89,6 +92,15 @@ document.querySelector('#settings-btn').addEventListener('click', function() {
     })
     .catch(error => console.error('Error logging out:', error));
     });
+
+    function onClickApprove(registerId) {
+    updateStatus(1, registerId); // Approve status ID = 1
+}
+
+function onClickReject(registerId) {
+    updateStatus(3, registerId); // Reject status ID = 3
+}
+
     </script>
 </body>
 </html>

@@ -17,7 +17,7 @@ body {
     font-family: inter;
 }
 
-#Register-form {
+.Register-form {
     display: block;
     border: solid 1px var(--DarkJade);
     border-radius: 5px;
@@ -28,7 +28,7 @@ body {
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
 }
 
-#Register-form h1{
+.Register-form h1{
     color: var(--DarkJade);
     font-weight: 400;
     letter-spacing: 2px;

@@ -77,6 +77,31 @@ app.get('/mainpage', isAuthenticated, (req, res) => {
     res.sendFile(path.join(__dirname, '/public/mainpage.html'));
 });
 
+app.post("/api/update-status", (req, res) => {
+    const { register_id, status_id } = req.body;
+
+    if (!register_id || !status_id) {
+        return res.status(400).send({ Message: "Missing required fields." });
+    }
+    // console.log("Updating register:", register_id, "to status:", status_id);
+
+    // Update the database
+    const sql = "UPDATE register SET status_id = ? WHERE register_id = ?";
+    db.run(sql, [status_id, register_id], function (err) {
+        if (err) {
+            console.error("Database error:", err.message);
+            return res.status(500).send({ Message: "Failed to update the status." });
+        }
+
+        if (this.changes > 0) {
+            res.status(200).send({ Message: "Status updated successfully." });
+        } else {
+            res.status(404).send({ Message: "Register not found." });
+        }
+    });
+});
+
+
 // app.use("*", express.static(path.join(__dirname, "/public/404.html")));
 //kan ikke ha 404 page hvis jeg bruker den fetch metoden jeg gjør nå.. :(
 
@@ -162,7 +187,7 @@ app.get('/godkjenn', isAuthenticated, isAdmin, (req, res) => {
 });
 
 
-// Serve login page for unauthenticated users
+// login page for unauthenticated users
 app.use("/login", express.static(path.join(__dirname, "/public")));
 
 app.use("/", express.static(path.join(__dirname, "/public")));
@@ -185,8 +210,6 @@ app.get('/api/table-data', (req, res) => {
             res.status(500).json({ error: err.message });
             return;
         }
-        
-        // Check if data is being retrieved from the database
         res.json(rows);
     });
 });
@@ -219,8 +242,6 @@ app.get('/api/users-data', (req, res) => {
             res.status(500).json({ error: err.message });
             return;
         }
-        
-        // Check if data is being retrieved from the database
         res.json(rows);
     });
 })
@@ -265,11 +286,70 @@ app.get('/api/user', (req, res) => {
                 res.status(500).json({ error: err.message });
                 return;
             }
-            
-            // Check if data is being retrieved from the database
             res.json(rows);
         });
     })
+
+    app.get('/api/user/:id', (req, res) => {
+        const userId = req.params.id;
+    
+        const query = `
+            SELECT register.register_id, users.name ||' '|| users.last_name as user_name, register.date, register.timerange, register.hours, register.room, register.subject, teachers.name ||' '|| teachers.last_name as teacher_name,
+            register.goal FROM register
+            INNER JOIN users ON register.users_id = users.user_id
+            INNER JOIN teachers ON register.teachers_id = teachers.teacher_id WHERE register.users_id = ? AND status_id = 2
+        `;
+        db.all(query, [userId], (err, rows) => {
+            if (err) {
+                console.error('Database error:', err);
+                return res.status(500).json({ error: 'Database error' });
+            }
+    
+            if (!rows || rows.length === 0) {
+                return res.status(404).json({ message: 'No records found for this user' });
+            }
+    
+            res.json(rows); // Return the array of records
+        });
+    });
+    
+// // Update register status to "approved" (status_id = 1)
+// app.post('/api/update-status-approved', (req, res) => {
+//     const { register_id } = req.body; // Get the register ID from the body
+
+//     const sql = 'UPDATE register SET status_id = 1 WHERE register_id = ?';
+//     db.run(sql, [register_id], function (err) {
+//         if (err) {
+//             console.error('Database error:', err);
+//             return res.status(500).json({ error: 'Failed to update register status' });
+//         }
+        
+//         if (this.changes > 0) {
+//             return res.json({ message: 'Register status updated to approved' });
+//         } else {
+//             return res.status(404).json({ message: 'Register not found' });
+//         }
+//     });
+// });
+
+// // Update register status to "rejected" (status_id = 3)
+// app.post('/api/update-status-rejected', (req, res) => {
+//     const { register_id } = req.body; // Get the register ID from the body
+
+//     const sql = 'UPDATE register SET status_id = 3 WHERE register_id = ?';
+//     db.run(sql, [register_id], function (err) {
+//         if (err) {
+//             console.error('Database error:', err);
+//             return res.status(500).json({ error: 'Failed to update register status' });
+//         }
+        
+//         if (this.changes > 0) {
+//             return res.json({ message: 'Register status updated to rejected' });
+//         } else {
+//             return res.status(404).json({ message: 'Register not found' });
+//         }
+//     });
+// });
 
 });
 

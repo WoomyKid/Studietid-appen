@@ -70,6 +70,10 @@
         </div>
         <br><br>
 
+        <!-- Kunne ha vært en rooms tabell i databasen, som fetcher rommene og lager <option value="${rooms.rooms_id}">${rooms.rooms_id}</option>
+         for hver eksisterende rom, lærte ordentlig om fetchingen senere i oppgaven, og gidder ikke å fikse og rote med
+         inner joins og displays i mainpage og admin-godkjenn page nå. Men er klar over dette og vil sannsynligvis gjøre
+         bedre i fremtiden..?-->
         <div>Rom</div>
         <label for="rooms"></label>
             <select id="rooms" name="Rooms" class="input-box" required>
@@ -93,6 +97,11 @@
         <input type="text" name="Fag" placeholder="Skriv inn faget du jobber med" class="input-box" required>
         <br></br>
 
+        <!-- Kan sikkert være erstattet av en fetchet tabell der det fetcher alle fra users table der mail slutter med @vlfk
+         også displayer navnet med query users.name ||' '|| users.last_name as user_name (dette setter sammen fornavn og etternavn
+         med mellomrom imellom navnene)
+         Gidder ikke å få det fikset med hvordan alt har blitt gjort fra starten, men er klar over dette
+         og vil sannsynligvis gjøre det bedre dersom det er noe slikt i fremtiden.-->
         <div>Lærer til stedet</div>
         <label for="lærer"></label>
             <select id="teacher" name="Teacher" class="input-box" required>

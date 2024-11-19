@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 let statusText = '<div id="nostat">ingenting nytt</div>';
                 if (userRegistration && userRegistration.status_id === 2) {
-                    statusText = '<div id="status">venter på godkjenning!</div>';
+                    statusText = `<div id="status" data-user-id="${user.user_id}">venter på godkjenning!</div>`;
                 }
 
                 const tr = document.createElement('tr');
@@ -53,13 +53,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     <td>${statusText}</td>
                 `;
 
-                // Add click event to redirect to admin-godkjenn.html with the user's ID
-                tr.addEventListener('click', () => {
-                    window.location.href = `/godkjenn?student_id=${user.user_id}`;
-                });
 
                 tableBody.appendChild(tr);
             });
+
+            document.querySelectorAll('#status').forEach(statusElement => {
+                statusElement.addEventListener('click', () => {
+                    const userId = statusElement.dataset.userId;
+                    window.location.href = `/godkjenn?user_id=${userId}`;
+                });
+            });
+            
         })
         .catch(error => console.error('Error fetching user data:', error));
 });
